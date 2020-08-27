@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "217327",
+      "name": "book",
+      "font_class": "book",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
+      "icon_id": "3810820",
+      "name": "book",
+      "font_class": "book1",
+      "unicode": "f0103",
+      "unicode_decimal": 983299
+    },
+    {
+      "icon_id": "14055582",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    }
+  ]
+}

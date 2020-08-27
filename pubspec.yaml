@@ -77,4 +77,17 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
-    - assets/
+    - static/font/
+    - static/file/
+    - static/images/
+
+  fonts:
+    - family: aliPuHui
+      fonts:
+        - asset: static/font/Alibaba-PuHuiTi-Regular.ttf
+    - family: iconFontCN
+      fonts:
+        - asset: static/font/iconfont/iconfont.ttf
+    - family: google_kavivanar
+      fonts:
+        - asset: static/font/google_kavivanar.ttf

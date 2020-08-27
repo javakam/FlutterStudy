@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/flutterchina/const.dart';
+import 'package:flutter_app/flutterchina/basic_widgets.dart';
 import 'package:flutter_app/flutterchina/context.dart';
-import 'package:flutter_app/flutterchina/text.dart';
+import 'package:flutter_app/flutterchina/form.dart';
 import 'package:flutter_app/flutterchina/theme_cupertino.dart';
-import 'package:flutter_app/sample/star.dart';
-import 'package:flutter_app/sample/toast_context.dart';
-import 'package:flutter_app/sample/toast_no_context.dart';
-import 'package:flutter_app/sample/widgets.dart';
-import 'package:flutter_app/sample/demo_page.dart';
+import 'package:flutter_app/flutterchina/toast_context.dart';
+import 'package:flutter_app/flutterchina/toast_no_context.dart';
 import 'package:flutter_app/flutterchina/my_home_page.dart';
 import 'package:flutter_app/flutterchina/route_return_value.dart';
 import 'package:flutter_app/flutterchina/state_lifecycle.dart';
 import 'package:flutter_app/flutterchina/state_management.dart';
 
+import 'package:flutter_app/sample/star.dart';
+import 'package:flutter_app/sample/listview_custom.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  //定义一个globalKey, 由于GlobalKey要保持全局唯一性，我们使用静态变量存储
-  //注意：使用GlobalKey开销较大，如果有其他可选方案，应尽量避免使用它。另外同一个GlobalKey在整个widget树中必须是唯一的，不能重复。
+  ///定义一个globalKey, 由于GlobalKey要保持全局唯一性，我们使用静态变量存储
+  ///注意：使用GlobalKey开销较大，如果有其他可选方案，应尽量避免使用它。另外同一个GlobalKey在整个widget树中必须是唯一的，不能重复。
+  ///https://book.flutterchina.club/chapter3/flutter_widget_intro.html
   static GlobalKey<ScaffoldState> _globalKey = GlobalKey();
 
   @override
@@ -28,14 +30,26 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
+        ///TextField 自定义样式
+        ///basic_widgets.dart -> TextFieldTestWidget
+        hintColor: Colors.grey[200], //定义下划线颜色
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TextStyle(color: Colors.deepOrangeAccent), //定义label字体样式
+          hintStyle: TextStyle(color: Colors.deepOrangeAccent, fontSize: 14.0), //定义提示文本样式
+          focusColor: Colors.yellow,
+        ),
       ),
       //注册路由表
       routes: {
         page_home_page: (context) => MyHomePage(),
+        page_star: (context) => StarWidget(),
+        page_listview_custom: (context) => ListViewCustomPage(),
+        page_widgets: (context) => BasicWidgets(),
+        page_widget_form: (context) => FormTestRoute(),
         page_decoration: (context) => BoxDecorationTestWidget(),
         page_column: (context) => ExpandedWidget(),
         page_new_route: (context) => NewRoute(),
-        page_star: (context) => StarWidget(),
         page_toast_context: (context) => ToastContext(),
         page_toast_context_no: (context) => ToastNoContext(),
         page_router_return_value: (context) => RouterTestRoute(),
@@ -55,6 +69,17 @@ class MyApp extends StatelessWidget {
       //应用首页路由
       //initialRoute:"/", //名为"/"的路由作为应用的home(首页)
 
+      //or 应用首页路由
+      home: Scaffold(
+        key: _globalKey, //设置key eg: _globalKey.currentState.openDrawer()
+        appBar: AppBar(
+          title: Text('Flutter'),
+        ),
+        body: Container(
+          child: _SamplesWidget(),
+        ),
+      ),
+
       //注意，onGenerateRoute只会对命名路由生效。
       onGenerateRoute: (RouteSettings settings) {
         return MaterialPageRoute(builder: (context) {
@@ -64,19 +89,8 @@ class MyApp extends StatelessWidget {
           return ParentWidget();
         });
       },
-      //navigatorObservers 和 onUnknownRoute 两个回调属性，前者可以监听所有路由跳转动作，后者在打开一个不存在的命名路由时会被调用
 
-      //or 应用首页路由
-      home: Scaffold(
-        key: _globalKey, //设置key
-        appBar: AppBar(
-          title: Text('Flutter'),
-        ),
-        body: Container(
-          child: TextTestWidget(),
-        ),
-      ),
-      //Drawer , FloatingActionButton ...
+      //navigatorObservers 和 onUnknownRoute 两个回调属性，前者可以监听所有路由跳转动作，后者在打开一个不存在的命名路由时会被调用
     );
   }
 }
@@ -91,9 +105,12 @@ class _SamplesWidget extends StatelessWidget {
         padding: const EdgeInsets.all(2.0),
         children: <Widget>[
           _item(context, 'MyHomePage 👉 my_home_page.dart', page_home_page),
-          _item(context, 'BoxDecorationTestWidget 👉 widgets.dart', page_decoration),
-          _item(context, 'ExpandedWidget 👉 widgets.dart', page_column),
           _item(context, 'StarWidget 👉 star.dart', page_star, arguments: [666, null.toString()]),
+          _item(context, 'ListViewCustomPage 👉 listview_custom.dart', page_listview_custom),
+          _item(context, 'BasicWidgets 👉 basic_widgets.dart', page_widgets),
+          _item(context, 'FormTestRoute 👉 form.dart', page_widget_form),
+          _item(context, 'BoxDecorationTestWidget 👉 basic_widgets.dart', page_decoration),
+          _item(context, 'ExpandedWidget 👉 basic_widgets.dart', page_column),
           _item(context, 'ToastContext 👉 toast_context.dart', page_toast_context),
           _item(context, 'ToastNoContext 👉 toast_no_context.dart', page_toast_context_no),
           _item(context, 'RouterTestRoute 👉 route_return_value.dart', page_router_return_value),
