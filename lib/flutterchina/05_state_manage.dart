@@ -44,7 +44,7 @@ class _TapboxAState extends State<TapboxA> {
   }
 }
 
-//父Widget管理子Widget的状态
+// 父Widget管理子Widget的状态
 // ParentWidget 为 TapboxB 管理状态.
 
 //------------------------ ParentWidget --------------------------------

@@ -1,18 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/flutterchina/const.dart';
-import 'package:flutter_app/flutterchina/basic_widgets.dart';
-import 'package:flutter_app/flutterchina/context.dart';
-import 'package:flutter_app/flutterchina/form.dart';
+import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
+import 'package:flutter_app/flutterchina/03_context.dart';
+import 'package:flutter_app/flutterchina/07_form.dart';
 import 'package:flutter_app/flutterchina/theme_cupertino.dart';
 import 'package:flutter_app/flutterchina/toast_context.dart';
 import 'package:flutter_app/flutterchina/toast_no_context.dart';
-import 'package:flutter_app/flutterchina/my_home_page.dart';
-import 'package:flutter_app/flutterchina/route_return_value.dart';
-import 'package:flutter_app/flutterchina/state_lifecycle.dart';
-import 'package:flutter_app/flutterchina/state_management.dart';
+import 'package:flutter_app/flutterchina/01_my_home_page.dart';
+import 'package:flutter_app/flutterchina/02_router_manage.dart';
+import 'package:flutter_app/flutterchina/04_state_lifecycle.dart';
+import 'package:flutter_app/flutterchina/05_state_manage.dart';
 
 import 'package:flutter_app/sample/star.dart';
 import 'package:flutter_app/sample/listview_custom.dart';
+
+var _Routers = {
+  page_home_page: (context) => MyHomePage(),
+  page_router_manage: (context) => RouterTestRoute(),
+  page_router_args_stateless: (context) => RouteWithArgsStateless(),
+  page_router_args_stateful: (context) => RouteWithArgsStateful(),
+  page_context: (context) => ContextRoute(),
+  page_context2: (context) => ContextRoute2(),
+  page_state_lifecycle_counter: (context) => StateLifecycleCounterWidget(),
+  page_state_manage_self: (context) => TapboxA(),
+  page_state_manage_parent: (context) => ParentWidget(),
+  page_state_manage_mixture: (context) => ParentWidgetC(),
+  page_widget_basic: (context) => BasicWidgets(),
+  page_widget_form: (context) => FormTestRoute(),
+  page_decoration: (context) => BoxDecorationTestWidget(),
+  page_column: (context) => ExpandedWidget(),
+  page_toast_context: (context) => ToastContext(),
+  page_toast_context_no: (context) => ToastNoContext(),
+  page_theme_cupertino: (context) => CupertinoTestRoute(),
+  page_eg_star: (context) => StarWidget(),
+  page_eg_listview_custom: (context) => ListViewCustomPage(),
+
+  // If the home property is specified, the routes table cannot include an entry for "/",
+  // since it would be redundant.
+  // "/": (context) => MyHomePage(title: 'Home Page'), //注册首页路由
+};
 
 void main() => runApp(MyApp());
 
@@ -41,31 +67,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       //注册路由表
-      routes: {
-        page_home_page: (context) => MyHomePage(),
-        page_star: (context) => StarWidget(),
-        page_listview_custom: (context) => ListViewCustomPage(),
-        page_widgets: (context) => BasicWidgets(),
-        page_widget_form: (context) => FormTestRoute(),
-        page_decoration: (context) => BoxDecorationTestWidget(),
-        page_column: (context) => ExpandedWidget(),
-        page_new_route: (context) => NewRoute(),
-        page_toast_context: (context) => ToastContext(),
-        page_toast_context_no: (context) => ToastNoContext(),
-        page_router_return_value: (context) => RouterTestRoute(),
-        page_counter: (context) => CounterWidget(),
-        page_context: (context) => ContextRoute(),
-        page_context2: (context) => ContextRoute2(),
-        page_cupertino: (context) => CupertinoTestRoute(),
-        //状态管理
-        page_state: (context) => TapboxA(),
-        page_state2: (context) => ParentWidget(),
-        page_state3: (context) => ParentWidgetC(),
-
-        // If the home property is specified, the routes table cannot include an entry for "/",
-        // since it would be redundant.
-        // "/": (context) => MyHomePage(title: 'Home Page'), //注册首页路由
-      },
+      routes: _Routers,
       //应用首页路由
       //initialRoute:"/", //名为"/"的路由作为应用的home(首页)
 
@@ -80,15 +82,15 @@ class MyApp extends StatelessWidget {
         ),
       ),
 
-      //注意，onGenerateRoute只会对命名路由生效。
-      onGenerateRoute: (RouteSettings settings) {
-        return MaterialPageRoute(builder: (context) {
-          String routeName = settings.name;
-          // 如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由，
-          // 引导用户登录；其它情况则正常打开路由。
-          return ParentWidget();
-        });
-      },
+      //注意，onGenerateRoute 只会对命名路由生效。
+      // onGenerateRoute: (RouteSettings settings) {
+      //   return MaterialPageRoute(builder: (context) {
+      //     String routeName = settings.name;
+      //     // 如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由，
+      //     // 引导用户登录；其它情况则正常打开路由。
+      //     return ParentWidget();
+      //   });
+      // },
 
       //navigatorObservers 和 onUnknownRoute 两个回调属性，前者可以监听所有路由跳转动作，后者在打开一个不存在的命名路由时会被调用
     );
@@ -102,25 +104,26 @@ class _SamplesWidget extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: ListView(
         shrinkWrap: true,
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(1.0),
         children: <Widget>[
-          _item(context, 'MyHomePage 👉 my_home_page.dart', page_home_page),
-          _item(context, 'StarWidget 👉 star.dart', page_star, arguments: [666, null.toString()]),
-          _item(context, 'ListViewCustomPage 👉 listview_custom.dart', page_listview_custom),
-          _item(context, 'BasicWidgets 👉 basic_widgets.dart', page_widgets),
-          _item(context, 'FormTestRoute 👉 form.dart', page_widget_form),
-          _item(context, 'BoxDecorationTestWidget 👉 basic_widgets.dart', page_decoration),
-          _item(context, 'ExpandedWidget 👉 basic_widgets.dart', page_column),
-          _item(context, 'ToastContext 👉 toast_context.dart', page_toast_context),
-          _item(context, 'ToastNoContext 👉 toast_no_context.dart', page_toast_context_no),
-          _item(context, 'RouterTestRoute 👉 route_return_value.dart', page_router_return_value),
-          _item(context, 'CounterWidget 👉 state_lifecycle.dar', page_counter),
-          _item(context, 'ContextRoute 👉 context.dart', page_context),
-          _item(context, 'ContextRoute2 👉 context.dart', page_context2),
-          _item(context, 'CupertinoTestRoute 👉 theme_cupertino.dart', page_cupertino),
-          _item(context, 'TapboxA 👉 state_management.dart', page_state),
-          _item(context, 'ParentWidget 👉 state_management.dart', page_state2),
-          _item(context, 'ParentWidgetC 👉 state_management.dart', page_state3),
+          _item(context, '默认首页', page_home_page),
+          _item(context, '路由管理👉Navigator+MaterialPageRoute', page_router_manage),
+          _item(context, 'Context👉findAncestorWidgetOfExactType->Scaffold', page_context),
+          _item(context, 'Context👉findAncestorStateOfType->ScaffoldState', page_context2),
+          _item(context, 'State生命周期', page_state_lifecycle_counter),
+          _item(context, '状态管理👉Widget管理自己的状态', page_state_manage_self),
+          _item(context, '状态管理👉Widget管理子Widget状态', page_state_manage_parent),
+          _item(context, '状态管理👉父Widget和子Widget都管理状态', page_state_manage_mixture),
+          _item(context, '基础组件👉Switch/Checkbox/TextField/Form/ProgressIndicator/Image/Icon',
+              page_widget_basic),
+          _item(context, '表单👉Form/TextFormField', page_widget_form),
+          _item(context, '遮罩👉BoxDecoration', page_decoration),
+          _item(context, '布局👉Column + Expanded', page_column),
+          _item(context, '吐司带有Context', page_toast_context),
+          _item(context, '吐司不带Context', page_toast_context_no),
+          _item(context, '主题👉Cupertino', page_theme_cupertino),
+          _item(context, '样例👉底部导航', page_eg_star, arguments: [666, null.toString()]),
+          _item(context, '样例👉ListView', page_eg_listview_custom),
         ],
       ),
     );
@@ -136,10 +139,14 @@ Widget _item(
     new Container(
       alignment: Alignment.topLeft,
       child: Padding(
-        padding: const EdgeInsets.all(1.0),
+        padding: const EdgeInsets.all(0.0),
         child: new RaisedButton(
             focusColor: Colors.cyan,
-            child: new Text(text.toString()),
+            child: new Text(
+              text.toString(),
+              maxLines: 3,
+              style: TextStyle(fontSize: 13),
+            ),
             onPressed: () {
               Navigator.pushNamed(context, page, arguments: arguments);
             }),

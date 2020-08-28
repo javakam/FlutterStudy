@@ -47,8 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 //使用路由 别名
                 //Navigator.pushNamed(context, page_new_route, arguments: ['abc', 23, null.toString(), "hi"]);
-                Navigator.of(context)
-                    .pushNamed(page_new_route, arguments: ['abc', 23, null.toString(), "hi"]);
+                //或者
+                //Navigator.of(context).pushNamed(page_router_args, arguments: ['abc', 23, null.toString(), "hi"]);
+
+
               },
             ),
           ],
@@ -59,26 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
-class NewRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    //获取路由参数
-    var args = ModalRoute.of(context).settings.arguments as List<Object>;
-    for (var obj in args) {
-      print("路由参数 : " + obj.toString());
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("New route"),
-      ),
-      body: Center(
-        child: Text("This is new route"),
-      ),
     );
   }
 }

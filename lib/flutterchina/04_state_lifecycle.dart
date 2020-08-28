@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 ///
-/// Result:
+/// 图 👉 https://pcdn.flutterchina.club/imgs/3-2.jpg
+/// 结果:
 /// I/flutter ( 6734): initState
 /// I/flutter ( 6734): didChangeDependencies
 /// I/flutter ( 6734): build
@@ -16,16 +17,16 @@ import 'package:flutter/material.dart';
 /// I/flutter ( 6734): deactivate
 /// I/flutter ( 6734): dispose
 ///
-class CounterWidget extends StatefulWidget {
-  const CounterWidget({Key key, this.initValue: 0});
+class StateLifecycleCounterWidget extends StatefulWidget {
+  const StateLifecycleCounterWidget({Key key, this.initValue: 0});
 
   final int initValue;
 
   @override
-  _CounterWidgetState createState() => new _CounterWidgetState();
+  _StateLifecycleCounterWidgetState createState() => new _StateLifecycleCounterWidgetState();
 }
 
-class _CounterWidgetState extends State<CounterWidget> {
+class _StateLifecycleCounterWidgetState extends State<StateLifecycleCounterWidget> {
   int _counter;
 
   @override
@@ -49,7 +50,7 @@ class _CounterWidgetState extends State<CounterWidget> {
   }
 
   @override
-  void didUpdateWidget(CounterWidget oldWidget) {
+  void didUpdateWidget(StateLifecycleCounterWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     print("didUpdateWidget");
   }

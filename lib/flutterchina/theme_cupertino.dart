@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+///cupertino_icons: ^0.1.3
 class CupertinoTestRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

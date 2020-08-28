@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/flutterchina/MyIcons.dart';
-import 'package:flutter_app/flutterchina/common.dart';
+import 'package:flutter_app/flutterchina/utils.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 
+///
+/// 基础组件
+/// 包括: Switch/Checkbox/TextField/Form/LinearProgressIndicator/CircularProgressIndicator/Image/Icon
+/// @author javakam
+///
 class BasicWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -146,7 +151,7 @@ class BasicWidgets extends StatelessWidget {
           ),
 
           ///单选开关和复选框 Switch/Checkbox
-          SwitchAndCheckBoxTestRoute(),
+          _SwitchAndCheckBoxTestRoute(),
           _CheckboxTestWidget(),
 
           ///TextField
@@ -158,7 +163,7 @@ class BasicWidgets extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          TextFieldTestWidget(),
+          _TextFieldTestWidget(),
           SizedBox(
             height: 10,
           ),
@@ -169,7 +174,7 @@ class BasicWidgets extends StatelessWidget {
             style: TextStyle(fontFamily: fontAliPuHui, fontWeight: FontWeight.bold, fontSize: 11),
           ),
 
-          TextFieldFocusTestRoute(),
+          _TextFieldFocusTestRoute(),
 
           //Form
           SizedBox(
@@ -293,7 +298,7 @@ class BasicWidgets extends StatelessWidget {
                   height: 10,
                 ),
                 //进度色动画: 进度条在3秒内从灰色变成蓝色的动画
-                ProgressRoute(),
+                _ProgressRoute(),
                 SizedBox(
                   height: 10,
                 ),
@@ -340,7 +345,7 @@ class BasicWidgets extends StatelessWidget {
             style: TextStyle(fontFamily: fontAliPuHui),
           ),
 
-          ImageAndIconRoute(),
+          _ImageAndIconRoute(),
           Text(
             '🌴图片缩放模式 fit 其他效果 👉',
             style: TextStyle(fontFamily: fontAliPuHui),
@@ -368,19 +373,19 @@ class BasicWidgets extends StatelessWidget {
           ),
 
           ///Icon
-          IconsRoute(),
+          _IconsRoute(),
         ],
       )),
     );
   }
 }
 
-class ProgressRoute extends StatefulWidget {
+class _ProgressRoute extends StatefulWidget {
   @override
   _ProgressRouteState createState() => _ProgressRouteState();
 }
 
-class _ProgressRouteState extends State<ProgressRoute> with SingleTickerProviderStateMixin {
+class _ProgressRouteState extends State<_ProgressRoute> with SingleTickerProviderStateMixin {
   AnimationController _animationController;
 
   @override
@@ -420,12 +425,12 @@ class _ProgressRouteState extends State<ProgressRoute> with SingleTickerProvider
 }
 
 ///控制焦点  TextField
-class TextFieldFocusTestRoute extends StatefulWidget {
+class _TextFieldFocusTestRoute extends StatefulWidget {
   @override
   _TextFieldFocusTestRouteState createState() => new _TextFieldFocusTestRouteState();
 }
 
-class _TextFieldFocusTestRouteState extends State<TextFieldFocusTestRoute> {
+class _TextFieldFocusTestRouteState extends State<_TextFieldFocusTestRoute> {
   FocusNode focusNode1 = new FocusNode();
   FocusNode focusNode2 = new FocusNode();
   FocusScopeNode focusScopeNode;
@@ -498,12 +503,12 @@ class _TextFieldFocusTestRouteState extends State<TextFieldFocusTestRoute> {
 /// I/flutter ( 4181): _controller: 看监控
 /// I/flutter ( 4181): onChange: 看监控
 ///
-class TextFieldTestWidget extends StatefulWidget {
+class _TextFieldTestWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _TextFieldTestWidgetState();
 }
 
-class _TextFieldTestWidgetState extends State<TextFieldTestWidget> {
+class _TextFieldTestWidgetState extends State<_TextFieldTestWidget> {
   TextEditingController _controller = TextEditingController();
 
   //下划线颜色随焦点改变而改变
@@ -582,12 +587,12 @@ class _TextFieldTestWidgetState extends State<TextFieldTestWidget> {
 }
 
 ///单选开关和复选框  Switch/Checkbox
-class SwitchAndCheckBoxTestRoute extends StatefulWidget {
+class _SwitchAndCheckBoxTestRoute extends StatefulWidget {
   @override
   _SwitchAndCheckBoxTestRouteState createState() => new _SwitchAndCheckBoxTestRouteState();
 }
 
-class _SwitchAndCheckBoxTestRouteState extends State<SwitchAndCheckBoxTestRoute> {
+class _SwitchAndCheckBoxTestRouteState extends State<_SwitchAndCheckBoxTestRoute> {
   bool _switchSelected = false; //维护单选开关状态
   bool _checkboxSelected = true; //维护复选框状态
 
@@ -744,7 +749,7 @@ class _CheckBoxTestState extends State {
   }
 }
 
-class IconsRoute extends StatelessWidget {
+class _IconsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String icons = "";
@@ -816,7 +821,7 @@ class IconsRoute extends StatelessWidget {
   }
 }
 
-class ImageAndIconRoute extends StatelessWidget {
+class _ImageAndIconRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var img = AssetImage("static/images/landscape.png");
@@ -896,6 +901,7 @@ class ImageAndIconRoute extends StatelessWidget {
   }
 }
 
+///BoxDecoration
 class BoxDecorationTestWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -909,7 +915,7 @@ class BoxDecorationTestWidget extends StatelessWidget {
           height: 120.0,
           width: 500.0,
           //透明黑色遮罩
-          decoration: new BoxDecoration(
+          decoration: BoxDecoration(
               //弧度为4.0
               borderRadius: BorderRadius.all(Radius.circular(4.0)),
               //设置了decoration的color，就不能设置Container的color。
@@ -921,6 +927,7 @@ class BoxDecorationTestWidget extends StatelessWidget {
   }
 }
 
+///Column + Expanded
 class ExpandedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
