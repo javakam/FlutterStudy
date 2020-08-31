@@ -785,7 +785,7 @@ class _IconsRoute extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(
-                Icons.accessible,
+                Icons.android,
                 color: Colors.green,
               ),
               Icon(

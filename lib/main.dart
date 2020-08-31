@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/flutterchina/08_layout_widgets.dart';
+import 'package:flutter_app/flutterchina/09_container_widget.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
 import 'package:flutter_app/flutterchina/03_context.dart';
@@ -27,6 +29,17 @@ var _Routers = {
   page_state_manage_mixture: (context) => ParentWidgetC(),
   page_widget_basic: (context) => BasicWidgets(),
   page_widget_form: (context) => FormTestRoute(),
+  page_layout_row: (context) => RowTestWidget(),
+  page_layout_column: (context) => ColumnTestWidget(),
+  page_layout_special: (context) => SpecialTestWidget(),
+  page_layout_flex: (context) => FlexLayoutTestRoute(),
+  page_layout_wrap: (context) => WrapTestWidget(),
+  page_layout_flow: (context) => FlowTestWidget(),
+  page_layout_stack_positioned: (context) => StackPositionedTestWidget(),
+  page_layout_align: (context) => AlignTestWidget(),
+  page_container: (context) => ContainerTestWidget(),
+  page_container_transform: (context) => TransformTestWidget(),
+  page_container_scaffold: (context) => ScaffoldTestWidget(),
   page_decoration: (context) => BoxDecorationTestWidget(),
   page_column: (context) => ExpandedWidget(),
   page_toast_context: (context) => ToastContext(),
@@ -117,6 +130,21 @@ class _SamplesWidget extends StatelessWidget {
           _item(context, '基础组件👉Switch/Checkbox/TextField/Form/ProgressIndicator/Image/Icon',
               page_widget_basic),
           _item(context, '表单👉Form/TextFormField', page_widget_form),
+          _item(context, '布局👉Row', page_layout_row),
+          _item(context, '布局👉Column', page_layout_column),
+          _item(context, '布局👉特殊情况', page_layout_special),
+          _item(context, '布局👉Flex', page_layout_flex),
+          _item(context, '布局👉Wrap', page_layout_wrap),
+          _item(context, '布局👉Flow', page_layout_flow),
+          _item(context, '布局👉Stack/Positioned', page_layout_stack_positioned),
+          _item(context, '布局👉Align/Alignment/FractionalOffset', page_layout_align),
+          _item(
+              context,
+              '容器👉Padding/ConstrainedBox/UnconstrainedBox/多重限制/DecoratedBox/AspectRatio/LimitedBox/FractionallySizedBox',
+              page_container),
+          _item(context, '容器👉Transform/RotatedBox/Container', page_container_transform),
+          _item(context, '容器👉Scaffold', page_container_scaffold),
+          //
           _item(context, '遮罩👉BoxDecoration', page_decoration),
           _item(context, '布局👉Column + Expanded', page_column),
           _item(context, '吐司带有Context', page_toast_context),
