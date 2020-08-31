@@ -152,6 +152,6 @@ void initState() {
 - 演示代码👉<https://github.com/javakam/FlutterStudy/blob/master/lib/flutterchina/02_router_manage.dart>
 
 
-| 入口 | 入口 |
+| 演示 | 入口 |
 |:---:|:---:|
-| <img src="https://github.com/javakam/FlutterStudy/blob/master/screenshot/02_router_a.jpg" width="288" height="610"/> | <img src="https://github.com/javakam/FlutterStudy/blob/master/screenshot/02_router_b.jpg" width="270" height="564"/> |
+| <img src="https://raw.githubusercontent.com/javakam/FlutterStudy/master/screenshot/02_router_a.jpg" width="288" height="610"/> | <img src="https://raw.githubusercontent.com/javakam/FlutterStudy/master/screenshot/02_router_b.jpg" width="270" height="564"/> |
