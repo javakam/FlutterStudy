@@ -48,8 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 //使用路由 别名
                 //Navigator.pushNamed(context, page_new_route, arguments: ['abc', 23, null.toString(), "hi"]);
                 //或者
-                //Navigator.of(context).pushNamed(page_router_args, arguments: ['abc', 23, null.toString(), "hi"]);
-
+                Navigator.of(context).pushNamed(page_container_transform, arguments: ['abc', 23, null.toString(), "hi"]);
 
               },
             ),

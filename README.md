@@ -155,3 +155,18 @@ void initState() {
 | 演示 | 入口 |
 |:---:|:---:|
 | <img src="https://raw.githubusercontent.com/javakam/FlutterStudy/master/screenshot/02_router_a.jpg" width="288" height="610"/> | <img src="https://raw.githubusercontent.com/javakam/FlutterStudy/master/screenshot/02_router_b.jpg" width="270" height="564"/> |
+
+
+- 用屏幕高度减去状态栏、导航栏、表头的高度即为剩余屏幕高度，代码如下：
+
+```
+... //省略无关代码
+SizedBox(
+  //Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56 
+  height: MediaQuery.of(context).size.height-24-56-56,
+  child: ListView.builder(itemBuilder: (BuildContext context, int index) {
+    return ListTile(title: Text("$index"));
+  }),
+)
+...
+```

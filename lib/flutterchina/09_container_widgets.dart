@@ -381,9 +381,10 @@ class _ScaffoldTestWidgetState extends State<ScaffoldTestWidget>
       })
        */
       appBar: AppBar(
-        //导航栏
         title: const Text("标题"),
         elevation: 3.0,
+
+        ///顶部导航栏
         /*
         Tab({
           Key key,
@@ -437,33 +438,39 @@ class _ScaffoldTestWidgetState extends State<ScaffoldTestWidget>
       drawer: new _MyDrawer(),
 
       ///bottomNavigationBar
-      // bottomNavigationBar: BottomNavigationBar(
-      //   // 底部导航
-      //   items: <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-      //     BottomNavigationBarItem(icon: Icon(Icons.business), title: Text('Business')),
-      //     BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('School')),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   fixedColor: Colors.blue,
-      //   onTap: _onItemTapped,
-      // ),
+      bottomNavigationBar: BottomNavigationBar(
+        // 底部导航
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          BottomNavigationBarItem(icon: Icon(Icons.business), title: Text('Business')),
+          BottomNavigationBarItem(icon: Icon(Icons.school), title: Text('School')),
+        ],
+        currentIndex: _selectedIndex,
+        fixedColor: Colors.blue,
+        onTap: _onItemTapped,
+      ),
 
       ///Material组件库中提供了一个BottomAppBar 组件，它可以和FloatingActionButton配合实现这种“打洞”效果
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
-        child: Row(
-          children: [
-            IconButton(icon: Icon(Icons.home)),
-            SizedBox(), //中间位置空出
-            IconButton(icon: Icon(Icons.business)),
-          ],
-          mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
-        ),
-      ),
-      //可以看到，上面代码中没有控制打洞位置的属性，实际上，打洞的位置取决于FloatingActionButton的位置:
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // bottomNavigationBar: BottomAppBar(
+      //   color: Colors.white,
+      //   shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
+      //   child: Row(
+      //     children: [
+      //       IconButton(
+      //         icon: Icon(Icons.home),
+      //       ),
+      //       SizedBox(), //中间位置空出
+      //       IconButton(
+      //         icon: Icon(Icons.business),
+      //       ),
+      //     ],
+      //     mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
+      //   ),
+      // ),
+
+      ///可以看到，上面代码中没有控制打洞位置的属性，实际上，打洞的位置取决于FloatingActionButton的位置:
+      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
       // BottomAppBar的shape属性决定洞的外形，CircularNotchedRectangle实现了一个圆形的外形，
       // 我们也可以自定义外形，比如，Flutter Gallery示例中就有一个“钻石”形状的示例，读者感兴趣可以自行查看。
 
@@ -480,7 +487,7 @@ class _ScaffoldTestWidgetState extends State<ScaffoldTestWidget>
           //创建3个Tab页
           return Container(
             alignment: Alignment.center,
-            child: Text(e, textScaleFactor: 5),
+            child: Text(e, textScaleFactor: 2),
           );
         }).toList(),
       ),
@@ -544,6 +551,67 @@ class _MyDrawer extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+///剪裁（Clip）
+/*
+剪裁Widget	作用
+ClipOval	子组件为正方形时剪裁为内贴圆形，为矩形时，剪裁为内贴椭圆
+ClipRRect	将子组件剪裁为圆角矩形
+ClipRect	剪裁子组件到实际占用的矩形大小（注:溢出部分剪裁!!!）
+ */
+class ClipTestWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // 头像
+    Widget avatar = Image.asset("static/images/onepiece.png", width: 60.0);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('剪裁（Clip）',),
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            avatar, //不剪裁
+            ClipOval(child: avatar), //剪裁为圆形
+            ClipRRect(
+              //剪裁为圆角矩形
+              borderRadius: BorderRadius.circular(5.0),
+              child: avatar,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topLeft,
+                  widthFactor: .5, //宽度设为原来宽度一半，另一半会溢出
+                  child: avatar,
+                ),
+                Text(
+                  "你好世界",
+                  style: TextStyle(color: Colors.green),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ClipRect(
+                  ///将溢出部分剪裁
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    widthFactor: .5, //宽度设为原来宽度一半
+                    child: avatar,
+                  ),
+                ),
+                Text("你好世界", style: TextStyle(color: Colors.green))
+              ],
             ),
           ],
         ),

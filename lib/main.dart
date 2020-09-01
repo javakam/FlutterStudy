@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/flutterchina/08_layout_widgets.dart';
-import 'package:flutter_app/flutterchina/09_container_widget.dart';
+import 'package:flutter_app/flutterchina/09_container_widgets.dart';
+import 'package:flutter_app/flutterchina/10_scrollable_widgets.dart';
+import 'package:flutter_app/flutterchina/11_function.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
 import 'package:flutter_app/flutterchina/03_context.dart';
@@ -40,6 +42,22 @@ var _Routers = {
   page_container: (context) => ContainerTestWidget(),
   page_container_transform: (context) => TransformTestWidget(),
   page_container_scaffold: (context) => ScaffoldTestWidget(),
+  page_container_clip: (context) => ClipTestWidget(),
+  page_scrollable_singlechildscrollview: (context) => SingleChildScrollViewTestWidget(),
+  page_scrollable_listview_builder: (context) => ListViewTestWidget(),
+  page_scrollable_listview_separated: (context) => ListViewTestWidget2(),
+  page_scrollable_listview_infinite: (context) => InfiniteListView(),
+  page_scrollable_listview_fixed_header: (context) => ListViewTestWidget3(),
+  page_scrollable_gridview_fixed: (context) => GridTestWidget(),
+  page_scrollable_gridview_max: (context) => GridTestWidget2(),
+  page_scrollable_gridview_infinite: (context) => InfiniteGridView(),
+  page_scrollable_gridview_staggered: (context) => StaggeredGridViewTestWidget(),
+  page_scrollable_scrollview: (context) => CustomScrollViewTestRoute(),
+  page_scrollable_listener: (context) => ScrollControllerTestRoute(),
+  page_scrollable_notification: (context) => ScrollNotificationTestRoute(),
+  page_func_willpopscope: (context) => WillPopScopeTestRoute(),
+  page_func_inherit_widget: (context) => InheritedWidgetTestRoute(),
+  //
   page_decoration: (context) => BoxDecorationTestWidget(),
   page_column: (context) => ExpandedWidget(),
   page_toast_context: (context) => ToastContext(),
@@ -116,7 +134,9 @@ class _SamplesWidget extends StatelessWidget {
     return new Container(
       alignment: Alignment.topLeft,
       child: ListView(
-        shrinkWrap: true,
+        reverse: true,
+        shrinkWrap: false,
+        //itemExtent: 45,
         padding: const EdgeInsets.all(1.0),
         children: <Widget>[
           _item(context, '默认首页', page_home_page),
@@ -144,6 +164,26 @@ class _SamplesWidget extends StatelessWidget {
               page_container),
           _item(context, '容器👉Transform/RotatedBox/Container', page_container_transform),
           _item(context, '容器👉Scaffold', page_container_scaffold),
+          _item(context, '容器👉剪裁👉ClipOval/ClipRRect/ClipRect', page_container_clip),
+          _item(context, '滚动👉SingleChildScrollView', page_scrollable_singlechildscrollview),
+          _item(context, '滚动👉ListView.builder', page_scrollable_listview_builder),
+          _item(context, '滚动👉ListView.separated', page_scrollable_listview_separated),
+          _item(context, '滚动👉ListView动态加载列表(模拟网络加载)', page_scrollable_listview_infinite),
+          _item(context, '滚动👉ListView添加固定列表头👉Column + Expanded',
+              page_scrollable_listview_fixed_header),
+          _item(context, '滚动👉GridView👉SliverGridDelegateWithFixedCrossAxisCount/GridView.count',
+              page_scrollable_gridview_fixed),
+          _item(context, '滚动👉GridView👉SliverGridDelegateWithMaxCrossAxisExtent/GridView.extent',
+              page_scrollable_gridview_max),
+          _item(context, '滚动👉GridView动态加载列表(模拟网络加载)', page_scrollable_gridview_infinite),
+          _item(context, '滚动👉瀑布流👉StaggeredGridView/SliverStaggeredGrid',
+              page_scrollable_gridview_staggered),
+          _item(context, '滚动👉Sliver👉CustomScrollView', page_scrollable_scrollview),
+          _item(context, '滚动👉滚动监听及控制👉ScrollController/ScrollPosition/PageStorageKey',
+              page_scrollable_listener),
+          _item(context, '滚动👉滚动通知👉NotificationListener', page_scrollable_notification),
+          _item(context, '双击退出👉WillPopScope', page_func_willpopscope),
+          _item(context, '数据共享👉InheritedWidget', page_func_inherit_widget),
           //
           _item(context, '遮罩👉BoxDecoration', page_decoration),
           _item(context, '布局👉Column + Expanded', page_column),
