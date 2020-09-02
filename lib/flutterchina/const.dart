@@ -44,6 +44,16 @@ const page_scrollable_listener = 'page_scrollable_listener';
 const page_scrollable_notification = 'page_scrollable_notification';
 const page_func_willpopscope = 'page_func_willpopscope';
 const page_func_inherit_widget = 'page_func_inherit_widget';
+const page_func_shopping_car = 'page_func_shopping_car';
+const page_func_dynamic_title_color = 'page_func_dynamic_title_color';
+const page_func_dynamic_theme_skin = 'page_func_dynamic_theme_skin';
+const page_func_mock_network = 'page_func_mock_network';
+const page_func_mock_network_multi = 'page_func_mock_network_multi';
+const page_func_alert_dialog = 'page_func_alert_dialog';
+const page_event_listener = 'page_event_listener';
+const page_event_gesture_click = 'page_event_gesture_click';
+const page_event_gesture_move = 'page_event_gesture_move';
+const page_event_gesture_move_one_direction = 'page_event_gesture_move_one_direction';
 
 //
 const page_decoration = 'page_decoration';

@@ -3,6 +3,12 @@ import 'package:flutter_app/flutterchina/08_layout_widgets.dart';
 import 'package:flutter_app/flutterchina/09_container_widgets.dart';
 import 'package:flutter_app/flutterchina/10_scrollable_widgets.dart';
 import 'package:flutter_app/flutterchina/11_function.dart';
+import 'package:flutter_app/flutterchina/12_shopping_car.dart';
+import 'package:flutter_app/flutterchina/13_color_theme.dart';
+import 'package:flutter_app/flutterchina/14_mock_network.dart';
+import 'package:flutter_app/flutterchina/15_dialog.dart';
+import 'package:flutter_app/flutterchina/16_event.dart';
+import 'package:flutter_app/flutterchina/17_gesture.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
 import 'package:flutter_app/flutterchina/03_context.dart';
@@ -57,6 +63,16 @@ var _Routers = {
   page_scrollable_notification: (context) => ScrollNotificationTestRoute(),
   page_func_willpopscope: (context) => WillPopScopeTestRoute(),
   page_func_inherit_widget: (context) => InheritedWidgetTestRoute(),
+  page_func_shopping_car: (context) => ProviderRoute(),
+  page_func_dynamic_title_color: (context) => CustomNavBarTestRoute(),
+  page_func_dynamic_theme_skin: (context) => ThemeTestRoute(),
+  page_func_mock_network: (context) => MockNetworkRoute(),
+  page_func_mock_network_multi: (context) => MockNetworkMultiRoute(),
+  page_func_alert_dialog: (context) => AlertDialogRoute(),
+  page_event_listener: (context) => ListenerTestRoute(),
+  page_event_gesture_click: (context) => GestureDetectorTestRoute(),
+  page_event_gesture_move: (context) => DragRoute(),
+  page_event_gesture_move_one_direction: (context) => DragVerticalRoute(),
   //
   page_decoration: (context) => BoxDecorationTestWidget(),
   page_column: (context) => ExpandedWidget(),
@@ -134,7 +150,7 @@ class _SamplesWidget extends StatelessWidget {
     return new Container(
       alignment: Alignment.topLeft,
       child: ListView(
-        reverse: true,
+        reverse: false,
         shrinkWrap: false,
         //itemExtent: 45,
         padding: const EdgeInsets.all(1.0),
@@ -184,6 +200,16 @@ class _SamplesWidget extends StatelessWidget {
           _item(context, '滚动👉滚动通知👉NotificationListener', page_scrollable_notification),
           _item(context, '双击退出👉WillPopScope', page_func_willpopscope),
           _item(context, '数据共享👉InheritedWidget', page_func_inherit_widget),
+          _item(context, '数据共享👉跨组件状态共享(Provider)👉购物车', page_func_shopping_car),
+          _item(context, '颜色和主题👉动态确定Title的颜色', page_func_dynamic_title_color),
+          _item(context, '颜色和主题👉路由换肤功能', page_func_dynamic_theme_skin),
+          _item(context, '异步UI更新👉FutureBuilder', page_func_mock_network),
+          _item(context, '异步UI更新👉StreamBuilder', page_func_mock_network_multi),
+          _item(context, '对话框👉Dialog', page_func_alert_dialog),
+          _item(context, '事件处理👉Listener', page_event_listener),
+          _item(context, '事件处理👉点击、双击、长按', page_event_gesture_click),
+          _item(context, '事件处理👉拖动、滑动', page_event_gesture_move),
+          _item(context, '事件处理👉单一方向拖动', page_event_gesture_move_one_direction),
           //
           _item(context, '遮罩👉BoxDecoration', page_decoration),
           _item(context, '布局👉Column + Expanded', page_column),
