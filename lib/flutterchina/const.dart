@@ -54,6 +54,17 @@ const page_event_listener = 'page_event_listener';
 const page_event_gesture_click = 'page_event_gesture_click';
 const page_event_gesture_move = 'page_event_gesture_move';
 const page_event_gesture_move_one_direction = 'page_event_gesture_move_one_direction';
+const page_event_gesture_scale = 'page_event_gesture_scale';
+const page_event_gesture_recognizer = 'page_event_gesture_recognizer';
+const page_event_gesture_conflict = 'page_event_gesture_conflict';
+const page_event_bus = 'page_event_bus';
+const page_event_notification = 'page_event_notification';
+const page_event_notification_custom = 'page_event_notification_custom';
+const page_animation_basic = 'page_animation_basic';
+const page_animation_basic_animated_widget = 'page_animation_basic_animated_widget';
+const page_animation_basic_animated_widget_common = 'page_animation_basic_animated_widget_common';
+const page_animation_route = 'page_animation_route';
+const page_animation_hero = 'page_animation_hero';
 
 //
 const page_decoration = 'page_decoration';

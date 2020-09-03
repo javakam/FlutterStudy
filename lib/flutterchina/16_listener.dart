@@ -44,7 +44,7 @@ class _ListenerTestRouteState extends State<ListenerTestRoute> {
 
   @override
   Widget build(BuildContext context) {
-    print('build....');
+    //print('build....');
     return Scaffold(
       appBar: AppBar(title: Text("Listener")),
       body: Column(
@@ -113,8 +113,8 @@ class _ListenerTestRouteState extends State<ListenerTestRoute> {
           这两个组件都能阻止子树接收指针事件，不同之处在于AbsorbPointer本身会参与命中测试，而IgnorePointer本身不会参与，
           这就意味着AbsorbPointer本身是可以接收指针事件的(但其子树不行)，而IgnorePointer不可以。
 
-         点击Container时，由于它在AbsorbPointer的子树上，所以不会响应指针事件，所以日志不会输出"in"，
-         但AbsorbPointer本身是可以接收指针事件的，所以会输出"down"。如果将 AbsorbPointer 换成 IgnorePointer，那么两个都不会输出。
+          点击Container时，由于它在AbsorbPointer的子树上，所以不会响应指针事件，所以日志不会输出"in"，
+          但AbsorbPointer本身是可以接收指针事件的，所以会输出"down"。如果将 AbsorbPointer 换成 IgnorePointer，那么两个都不会输出。
            */
           Listener(
             child: AbsorbPointer(

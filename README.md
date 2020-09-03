@@ -3,9 +3,43 @@
 - 🚀 [项目代码](https://github.com/javakam/FlutterStudy)
 - 🚀 [演示代码](https://github.com/javakam/FlutterStudy/blob/master/lib/flutterchina/02_router_manage.dart)
 
-## Flutter 执行 Navigation.pop 时 重复执行一次 build 的问题
+## 一些不易理解的知识点
 
+### 数据共享（InheritedWidget）
+
+🌴<https://book.flutterchina.club/chapter7/willpopscope.html>
+
+### 跨组件状态共享（Provider）
+🌴<https://book.flutterchina.club/chapter7/provider.html>
+
+### Notification 通知冒泡过程源码分析
+🌴<https://book.flutterchina.club/chapter8/notification.html>
+
+### 动画结构
+演示`Dart`语言的封装技巧
+
+🌴<https://book.flutterchina.club/chapter9/animation_structure.html>
+
+## 随记
+
+### 获取显示的屏幕高度
+用屏幕高度减去状态栏、导航栏、表头的高度即为剩余屏幕高度, 代码如下: 
+
+```dart
+... //省略无关代码
+SizedBox(
+  //Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56 
+  height: MediaQuery.of(context).size.height-24-56-56,
+  child: ListView.builder(itemBuilder: (BuildContext context, int index) {
+    return ListTile(title: Text("$index"));
+  }),
+)
+...
 ```
+
+### Flutter 执行 Navigation.pop 时 重复执行一次 build 的问题
+
+```dart
 // 打开`TipRouteWithArgs`，并等待返回结果
 // 路由参数 以命名路由方式传参
 var result = await Navigator.pushNamed(context, page_router_test_args,
@@ -99,9 +133,9 @@ Since you've that initialized inside build() function, it's going to get called 
 
 🍎当然,正常思维应该是该页面退出,就不应该再执行一般`build`后在退出,不合正常逻辑。
 
-### 解决方式一(适用于 StatelessWidget):
+#### 解决方式一(适用于 StatelessWidget):
 
-```
+```dart
 var args = ModalRoute.of(context).settings.arguments as List<Object>;
 //1.如果为空,返回一个轻量级的 SizedBox 控件
 if (args == null || args.isEmpty) {
@@ -111,13 +145,9 @@ if (args == null || args.isEmpty) {
 String text = args.name;
 args.clear();
 //3.使用text数据
-return Scaffold(
-      appBar: AppBar(
-        title: Text("提示 $text"),
-      ),
+return Scaffold(appBar: AppBar(title: Text("提示 $text"),),
 ...
 ```
-
 再看下日志:
 
 ```
@@ -126,10 +156,10 @@ I/flutter (32061): build..........
 ```
 虽然还是会再次执行一遍`build`,但从性能角度上讲,比不优化前提高了很多。
 
-### 解决方式二(适用于 StatefulWidget)
+#### 解决方式二(适用于 StatefulWidget)
 > 注意: 要套上`Builder`,因为`Builder`会将`widget`节点的`context`作为回调参数,而不能用`State`的`context`!!!
 
-```
+```dart
 String text = "";
 
 @override
@@ -156,17 +186,3 @@ void initState() {
 |:---:|:---:|
 | <img src="https://raw.githubusercontent.com/javakam/FlutterStudy/master/screenshot/02_router_a.jpg" width="288" height="610"/> | <img src="https://raw.githubusercontent.com/javakam/FlutterStudy/master/screenshot/02_router_b.jpg" width="270" height="564"/> |
 
-
-- 用屏幕高度减去状态栏、导航栏、表头的高度即为剩余屏幕高度，代码如下：
-
-```
-... //省略无关代码
-SizedBox(
-  //Material设计规范中状态栏、导航栏、ListTile高度分别为24、56、56 
-  height: MediaQuery.of(context).size.height-24-56-56,
-  child: ListView.builder(itemBuilder: (BuildContext context, int index) {
-    return ListTile(title: Text("$index"));
-  }),
-)
-...
-```

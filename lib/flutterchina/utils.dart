@@ -5,6 +5,8 @@ void toast(text) => toastOriginal(text, ToastGravity.CENTER);
 
 void toastTop(text) => toastOriginal(text, ToastGravity.TOP);
 
+void toastBottom(text) => toastOriginal(text, ToastGravity.BOTTOM);
+
 void toastOriginal(String text, ToastGravity gravity) {
   //Toast with No Build Context
   if (text == null) return;

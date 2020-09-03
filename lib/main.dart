@@ -7,8 +7,13 @@ import 'package:flutter_app/flutterchina/12_shopping_car.dart';
 import 'package:flutter_app/flutterchina/13_color_theme.dart';
 import 'package:flutter_app/flutterchina/14_mock_network.dart';
 import 'package:flutter_app/flutterchina/15_dialog.dart';
-import 'package:flutter_app/flutterchina/16_event.dart';
+import 'package:flutter_app/flutterchina/16_listener.dart';
 import 'package:flutter_app/flutterchina/17_gesture.dart';
+import 'package:flutter_app/flutterchina/18_event_bus.dart';
+import 'package:flutter_app/flutterchina/19_notification.dart';
+import 'package:flutter_app/flutterchina/20_animation.dart';
+import 'package:flutter_app/flutterchina/21_animation_route.dart';
+import 'package:flutter_app/flutterchina/22_animation_hero.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
 import 'package:flutter_app/flutterchina/03_context.dart';
@@ -17,7 +22,7 @@ import 'package:flutter_app/flutterchina/theme_cupertino.dart';
 import 'package:flutter_app/flutterchina/toast_context.dart';
 import 'package:flutter_app/flutterchina/toast_no_context.dart';
 import 'package:flutter_app/flutterchina/01_my_home_page.dart';
-import 'package:flutter_app/flutterchina/02_router_manage.dart';
+import 'package:flutter_app/flutterchina/02_route_manage.dart';
 import 'package:flutter_app/flutterchina/04_state_lifecycle.dart';
 import 'package:flutter_app/flutterchina/05_state_manage.dart';
 
@@ -73,6 +78,17 @@ var _Routers = {
   page_event_gesture_click: (context) => GestureDetectorTestRoute(),
   page_event_gesture_move: (context) => DragRoute(),
   page_event_gesture_move_one_direction: (context) => DragVerticalRoute(),
+  page_event_gesture_scale: (context) => ScaleTestRoute(),
+  page_event_gesture_recognizer: (context) => GestureRecognizerTestRoute(),
+  page_event_gesture_conflict: (context) => GestureConflictTestRoute(),
+  page_event_bus: (context) => EventBusTestRoute(),
+  page_event_notification: (context) => NotificationTestRoute(),
+  page_event_notification_custom: (context) => NotificationRoute(),
+  page_animation_basic: (context) => ScaleAnimationRoute(),
+  page_animation_basic_animated_widget: (context) => ScaleAnimationRoute1(),
+  page_animation_basic_animated_widget_common: (context) => ScaleAnimationRoute2(),
+  page_animation_route: (context) => PageAnimationTestRoute(),
+  page_animation_hero: (context) => HeroAnimationRoute(),
   //
   page_decoration: (context) => BoxDecorationTestWidget(),
   page_column: (context) => ExpandedWidget(),
@@ -210,6 +226,18 @@ class _SamplesWidget extends StatelessWidget {
           _item(context, '事件处理👉点击、双击、长按', page_event_gesture_click),
           _item(context, '事件处理👉拖动、滑动', page_event_gesture_move),
           _item(context, '事件处理👉单一方向拖动', page_event_gesture_move_one_direction),
+          _item(context, '事件处理👉缩放', page_event_gesture_scale),
+          _item(context, '事件处理👉GestureRecognizer', page_event_gesture_recognizer),
+          _item(context, '事件处理👉手势冲突', page_event_gesture_conflict),
+          _item(context, '事件处理👉全局事件总线👉EventBus', page_event_bus),
+          _item(context, '事件处理👉通知冒泡(Notification Bubbling)', page_event_notification),
+          _item(context, '事件处理👉自定义通知', page_event_notification_custom),
+          _item(context, '动画👉基础动画', page_animation_basic),
+          _item(
+              context, '动画👉AnimatedWidget/AnimatedBuilder', page_animation_basic_animated_widget),
+          _item(context, '动画👉GrowTransition/动画状态监听', page_animation_basic_animated_widget_common),
+          _item(context, '动画👉Route动画', page_animation_route),
+          _item(context, '动画👉Hero动画(共享元素转换)', page_animation_hero),
           //
           _item(context, '遮罩👉BoxDecoration', page_decoration),
           _item(context, '布局👉Column + Expanded', page_column),
