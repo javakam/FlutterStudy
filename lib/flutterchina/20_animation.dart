@@ -55,7 +55,7 @@ class _ScaleAnimationRouteState extends State<ScaleAnimationRoute>
     return Scaffold(
       appBar: AppBar(title: Text("Animation")),
       body: new Center(
-        child: Image.asset("static/images/mountain.png",
+        child: Image.asset("static/images/mountain.webp",
             width: animation.value, height: animation.value),
       ),
     );
@@ -85,7 +85,7 @@ class _AnimatedImage extends AnimatedWidget {
   Widget build(BuildContext context) {
     final Animation<double> animation = listenable;
     return new Center(
-      child: Image.asset("static/images/mountain.png",
+      child: Image.asset("static/images/mountain.webp",
           width: animation.value, height: animation.value),
     );
   }
@@ -133,7 +133,7 @@ class _ScaleAnimationRouteState1 extends State<ScaleAnimationRoute1>
           ),
           AnimatedBuilder(
             animation: animation,
-            child: Image.asset("static/images/mountain.png"),
+            child: Image.asset("static/images/mountain.webp"),
             builder: (BuildContext ctx, Widget child) {
               return new Center(
                 child: Container(
@@ -218,7 +218,7 @@ class _ScaleAnimationRouteState2 extends State<ScaleAnimationRoute2>
             style: TextStyle(fontSize: 15, color: Colors.grey,fontFamily: fontAliPuHui),
           ),
           _GrowTransition(
-            child: Image.asset("static/images/mountain.png"),
+            child: Image.asset("static/images/mountain.webp"),
             animation: animation,
           ),
         ],

@@ -65,6 +65,9 @@ const page_animation_basic_animated_widget = 'page_animation_basic_animated_widg
 const page_animation_basic_animated_widget_common = 'page_animation_basic_animated_widget_common';
 const page_animation_route = 'page_animation_route';
 const page_animation_hero = 'page_animation_hero';
+const page_animation_stagger = 'page_animation_stagger';
+const page_animation_switcher = 'page_animation_switcher';
+const page_animation_switcher_advance = 'page_animation_switcher_advance';
 
 //
 const page_decoration = 'page_decoration';

@@ -14,6 +14,8 @@ import 'package:flutter_app/flutterchina/19_notification.dart';
 import 'package:flutter_app/flutterchina/20_animation.dart';
 import 'package:flutter_app/flutterchina/21_animation_route.dart';
 import 'package:flutter_app/flutterchina/22_animation_hero.dart';
+import 'package:flutter_app/flutterchina/23_animation_stagger.dart';
+import 'package:flutter_app/flutterchina/24_animation_switcher.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
 import 'package:flutter_app/flutterchina/03_context.dart';
@@ -89,6 +91,9 @@ var _Routers = {
   page_animation_basic_animated_widget_common: (context) => ScaleAnimationRoute2(),
   page_animation_route: (context) => PageAnimationTestRoute(),
   page_animation_hero: (context) => HeroAnimationRoute(),
+  page_animation_stagger: (context) => StaggerRoute(),
+  page_animation_switcher: (context) => AnimatedSwitcherCounterRoute(),
+  page_animation_switcher_advance: (context) => MySlideTransition(),
   //
   page_decoration: (context) => BoxDecorationTestWidget(),
   page_column: (context) => ExpandedWidget(),
@@ -238,6 +243,9 @@ class _SamplesWidget extends StatelessWidget {
           _item(context, '动画👉GrowTransition/动画状态监听', page_animation_basic_animated_widget_common),
           _item(context, '动画👉Route动画', page_animation_route),
           _item(context, '动画👉Hero动画(共享元素转换)', page_animation_hero),
+          _item(context, '动画👉交织动画(Stagger Animation)', page_animation_stagger),
+          _item(context, '动画👉动画切换👉AnimatedSwitcher', page_animation_switcher),
+          _item(context, '动画👉动画切换👉AnimatedSwitcher高级用法', page_animation_switcher_advance),
           //
           _item(context, '遮罩👉BoxDecoration', page_decoration),
           _item(context, '布局👉Column + Expanded', page_column),

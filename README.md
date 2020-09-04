@@ -20,6 +20,14 @@
 
 🌴<https://book.flutterchina.club/chapter9/animation_structure.html>
 
+### AnimatedSwitcher 实现原理(伪代码示例)及高级用法
+
+🌴<https://book.flutterchina.club/chapter9/animated_switcher.html>
+
+#### 动画过渡组件
+
+🌴<https://book.flutterchina.club/chapter9/animated_widgets.html>
+
 ## 随记
 
 ### 获取显示的屏幕高度

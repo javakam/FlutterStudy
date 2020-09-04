@@ -175,7 +175,7 @@ class _ScaleTestRouteState extends State<ScaleTestRoute> {
       body: Center(
         child: GestureDetector(
           //指定宽度，高度自适应
-          child: Image.asset("static/images/mountain.png", width: _width),
+          child: Image.asset("static/images/mountain.webp", width: _width),
           onScaleUpdate: (ScaleUpdateDetails details) {
             setState(() {
               //缩放倍数在0.8到10倍之间
