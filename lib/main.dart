@@ -16,6 +16,7 @@ import 'package:flutter_app/flutterchina/21_animation_route.dart';
 import 'package:flutter_app/flutterchina/22_animation_hero.dart';
 import 'package:flutter_app/flutterchina/23_animation_stagger.dart';
 import 'package:flutter_app/flutterchina/24_animation_switcher.dart';
+import 'package:flutter_app/flutterchina/25_custom_widget.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
 import 'package:flutter_app/flutterchina/03_context.dart';
@@ -94,6 +95,12 @@ var _Routers = {
   page_animation_stagger: (context) => StaggerRoute(),
   page_animation_switcher: (context) => AnimatedSwitcherCounterRoute(),
   page_animation_switcher_advance: (context) => MySlideTransition(),
+  page_custom_widget: (context) => CustomWidgetRoute(),
+  page_custom_widget_official: (context) => GradientButtonRoute(),
+  page_custom_widget_turn_box: (context) => TurnBoxRoute(),
+  page_custom_widget_rich_text: (context) => MyRichTextRoute(),
+  page_custom_paint: (context) => CustomPaintRoute(),
+  page_custom_circle_progress: (context) => GradientCircularProgressRoute(),
   //
   page_decoration: (context) => BoxDecorationTestWidget(),
   page_column: (context) => ExpandedWidget(),
@@ -246,6 +253,12 @@ class _SamplesWidget extends StatelessWidget {
           _item(context, '动画👉交织动画(Stagger Animation)', page_animation_stagger),
           _item(context, '动画👉动画切换👉AnimatedSwitcher', page_animation_switcher),
           _item(context, '动画👉动画切换👉AnimatedSwitcher高级用法', page_animation_switcher_advance),
+          _item(context, '自定义组件👉GradientButton', page_custom_widget),
+          _item(context, '自定义组件👉GradientButton(Official)', page_custom_widget_official),
+          _item(context, '自定义组件👉TurnBox', page_custom_widget_turn_box),
+          _item(context, '自定义组件👉MyRichText', page_custom_widget_rich_text),
+          _item(context, '自绘组件👉五子棋👉CustomPainter ', page_custom_paint),
+          _item(context, '自绘组件👉圆形背景渐变进度条 ', page_custom_circle_progress),
           //
           _item(context, '遮罩👉BoxDecoration', page_decoration),
           _item(context, '布局👉Column + Expanded', page_column),

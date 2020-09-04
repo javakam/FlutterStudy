@@ -68,6 +68,12 @@ const page_animation_hero = 'page_animation_hero';
 const page_animation_stagger = 'page_animation_stagger';
 const page_animation_switcher = 'page_animation_switcher';
 const page_animation_switcher_advance = 'page_animation_switcher_advance';
+const page_custom_widget = 'page_custom_widget';
+const page_custom_widget_official = 'page_custom_widget_official';
+const page_custom_widget_turn_box = 'page_custom_widget_turn_box';
+const page_custom_widget_rich_text = 'page_custom_widget_rich_text';
+const page_custom_paint = 'page_custom_paint';
+const page_custom_circle_progress = 'page_custom_circle_progress';
 
 //
 const page_decoration = 'page_decoration';
