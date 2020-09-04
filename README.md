@@ -3,6 +3,11 @@
 - 🚀 [项目代码](https://github.com/javakam/FlutterStudy)
 - 🚀 [演示代码](https://github.com/javakam/FlutterStudy/blob/master/lib/flutterchina/02_router_manage.dart)
 
+## Flutter 上手网站
+**Flutter.cn**👉<https://flutter.cn/docs/development/ui/splash-screen/android-splash-screen>
+**FlutterChina.club**👉<https://book.flutterchina.club/chapter11/file_operation.html>
+**Flutter效果**👉<https://gallery.flutter.dev/#/>
+
 ## 一些不易理解的知识点
 
 ### 数据共享（InheritedWidget）
