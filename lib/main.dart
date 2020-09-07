@@ -17,6 +17,10 @@ import 'package:flutter_app/flutterchina/22_animation_hero.dart';
 import 'package:flutter_app/flutterchina/23_animation_stagger.dart';
 import 'package:flutter_app/flutterchina/24_animation_switcher.dart';
 import 'package:flutter_app/flutterchina/25_custom_widget.dart';
+import 'package:flutter_app/flutterchina/26_file_system.dart';
+import 'package:flutter_app/flutterchina/27_network.dart';
+import 'package:flutter_app/flutterchina/28_network_dio.dart';
+import 'package:flutter_app/flutterchina/29_network_websocket.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 import 'package:flutter_app/flutterchina/06_basic_widgets.dart';
 import 'package:flutter_app/flutterchina/03_context.dart';
@@ -101,6 +105,10 @@ var _Routers = {
   page_custom_widget_rich_text: (context) => MyRichTextRoute(),
   page_custom_paint: (context) => CustomPaintRoute(),
   page_custom_circle_progress: (context) => GradientCircularProgressRoute(),
+  page_file: (context) => FileOperationRoute(),
+  page_network_original: (context) => HttpTestRoute(),
+  page_network_dio: (context) => DioTestRoute(),
+  page_network_websocket: (context) => WebSocketRoute(),
   //
   page_decoration: (context) => BoxDecorationTestWidget(),
   page_column: (context) => ExpandedWidget(),
@@ -259,6 +267,10 @@ class _SamplesWidget extends StatelessWidget {
           _item(context, '自定义组件👉MyRichText', page_custom_widget_rich_text),
           _item(context, '自绘组件👉五子棋👉CustomPainter ', page_custom_paint),
           _item(context, '自绘组件👉圆形背景渐变进度条 ', page_custom_circle_progress),
+          _item(context, '文件操作', page_file),
+          _item(context, '网络操作👉HttpClient', page_network_original),
+          _item(context, '网络操作👉dio', page_network_dio),
+          _item(context, '网络操作👉WebSocket', page_network_websocket),
           //
           _item(context, '遮罩👉BoxDecoration', page_decoration),
           _item(context, '布局👉Column + Expanded', page_column),

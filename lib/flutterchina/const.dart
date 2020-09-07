@@ -74,6 +74,10 @@ const page_custom_widget_turn_box = 'page_custom_widget_turn_box';
 const page_custom_widget_rich_text = 'page_custom_widget_rich_text';
 const page_custom_paint = 'page_custom_paint';
 const page_custom_circle_progress = 'page_custom_circle_progress';
+const page_file= 'page_file';
+const page_network_original= 'page_network_original';
+const page_network_dio= 'page_network_dio';
+const page_network_websocket= 'page_network_websocket';
 
 //
 const page_decoration = 'page_decoration';

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/flutterchina/const.dart';
 
@@ -61,7 +62,6 @@ class RouterTestRoute extends StatelessWidget {
               child: Text("打开提示页(arguments传参到 StatelessWidget)"),
             ),
           ),
-
           Center(
             child: RaisedButton(
               onPressed: () async {
@@ -85,7 +85,7 @@ class RouterTestRoute extends StatelessWidget {
 class _TipRoute extends StatelessWidget {
   _TipRoute({
     Key key,
-    @required this.text, // 接收一个text参数
+    this.text, // 接收一个text参数
   }) : super(key: key);
   final String text;
 
@@ -175,7 +175,7 @@ class _RouteWithArgsStatefulState extends State<RouteWithArgsStateful> {
 
     Builder(
       // ignore: missing_return
-      builder: (context){
+      builder: (context) {
         //获取路由参数
         var args = ModalRoute.of(context).settings.arguments as List<Object>;
         for (var obj in args) {
