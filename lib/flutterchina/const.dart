@@ -1,3 +1,5 @@
+import 'package:camera/camera.dart';
+
 ///字体
 const fontAliPuHui = 'aliPuHui';
 const fontIconFontCN = 'iconFontCN';
@@ -78,6 +80,7 @@ const page_file= 'page_file';
 const page_network_original= 'page_network_original';
 const page_network_dio= 'page_network_dio';
 const page_network_websocket= 'page_network_websocket';
+const page_texture_camera= 'page_texture_camera';
 
 //
 const page_decoration = 'page_decoration';
@@ -87,3 +90,6 @@ const page_toast_context_no = 'page_toast_context_no';
 const page_theme_cupertino = 'page_theme_cupertino';
 const page_eg_star = 'page_eg_star';
 const page_eg_listview_custom = 'page_eg_listview_custom';
+
+///
+List<CameraDescription> cameras = [];
