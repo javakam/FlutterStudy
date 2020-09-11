@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/flutterchina/MyIcons.dart';
@@ -319,6 +320,10 @@ class BasicWidgets extends StatelessWidget {
             this.repeat = ImageRepeat.noRepeat, //重复方式
           })
            */
+          Text(
+            '🌴从assets加载图片 👉',
+            style: TextStyle(fontFamily: fontAliPuHui),
+          ),
           Image(image: AssetImage("static/images/landscape.png"), width: 60.0, height: 60.0),
 
           Image.asset(
@@ -339,6 +344,50 @@ class BasicWidgets extends StatelessWidget {
             "https://www.easyicon.net/api/resizeApi.php?id=1228952&size=72",
             width: 100.0,
             height: 60.0,
+          ),
+
+          ///圆角图片
+          Text(
+            '🌴圆角图片 👉',
+            style: TextStyle(fontFamily: fontAliPuHui),
+          ),
+          Column(
+            children: [
+              Image(
+                image: NetworkImage(
+                    "https://portrait.gitee.com/uploads/avatars/user/168/505050_javakam_1599631074.png"),
+                width: 60.0,
+                height: 60.0,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.lightBlueAccent[50],
+                ),
+                child: ClipOval(
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        "https://portrait.gitee.com/uploads/avatars/user/168/505050_javakam_1599631074.png",
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                    // placeholder: (context, url) => placeholder,
+                    // errorWidget: (context, url, error) => placeholder,
+                  ),
+                ),
+              ),
+              ListTile(
+                dense: true,
+                leading: ClipOval(
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        "https://portrait.gitee.com/uploads/avatars/user/168/505050_javakam_1599631074.png",
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
           ),
           Text(
             '🌴图片缩放模式 fit 👉',

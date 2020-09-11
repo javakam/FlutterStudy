@@ -45,6 +45,7 @@ dependencies:
   camera: ^0.5.8+5
   # import 'package:video_player/video_player.dart';
   video_player: ^0.10.12+2
+  cached_network_image: ^2.3.1
 
 dev_dependencies:
   flutter_test:
